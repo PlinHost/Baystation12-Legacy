@@ -17,7 +17,7 @@
 		return      // don't remove any labels
 	if(A.labels.len == 1)
 		var/t = A.labels[1]
-		A.name = copytext(A.name,1,lentext(A.name) - (lentext(t) + 2))
+		A.name = copytext(A.name,1,length(A.name) - (length(t) + 2))
 		A.labels -= t
 		return
 	if(A.labels.len > 1)
@@ -29,14 +29,14 @@
 		if(i != A.labels.len) //if we arent removing the last label
 			var/k = 0
 			for(var/j = i+1, j <= A.labels.len, j++)
-				k += lentext(A.labels[j]) + 3 // 3 = " (" + ")"
-			var/labelend = lentext(A.name) - (k-1)
-			var/labelstart = labelend - (lentext(t)+3)
+				k += length(A.labels[j]) + 3 // 3 = " (" + ")"
+			var/labelend = length(A.name) - (k-1)
+			var/labelstart = labelend - (length(t)+3)
 			A.name = addtext(copytext(A.name,1,labelstart),copytext(A.name,labelend,0))
 			A.labels -= t
 			return
 		if(i == A.labels.len) //if this is the last label we don't need to find the length of the stuff infront of it
-			var/labelstart = lentext(A.name) - (lentext(t)+3)
+			var/labelstart = length(A.name) - (length(t)+3)
 			A.name = copytext(A.name,1,labelstart)
 			A.labels -= t
 			return

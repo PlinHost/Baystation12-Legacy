@@ -84,7 +84,7 @@
 
 		var/tab = winget(src, t, "title")
 		if(text2ascii(tab) == text2ascii("!"))
-			tab = copytext(tab, 2, lentext(tab))
+			tab = copytext(tab, 2, length(tab))
 
 		var/tabl = lowertext(tab)
 		ctab_settings["display_[tabl]"] = list("Game", tab)
@@ -96,7 +96,7 @@
 			continue
 		var/tab = winget(src, t, "title")
 		if(text2ascii(tab) == text2ascii("!"))
-			tab = copytext(tab, 2, lentext(tab))
+			tab = copytext(tab, 2, length(tab))
 		if(cmptext(tab, "game"))
 			continue
 		var/tabl = lowertext(tab)
@@ -120,7 +120,7 @@
 	var/tab = winget(src, "ctabs.tabs", "current-tab")
 	var/title = winget(src, tab, "title")
 	if(text2ascii(title) == text2ascii("!"))
-		winset(src, tab, "title=\"[copytext(title, 2, lentext(title))]\"")
+		winset(src, tab, "title=\"[copytext(title, 2, length(title))]\"")
 
 
 
@@ -190,7 +190,7 @@
 
 			if("add_tab")
 				tab = input(src, "Name the tab (permitted characters: letters, numbers, and underscores)", "", "") as text
-				var/len = lentext(tab)
+				var/len = length(tab)
 				if(len >= 1)
 					var/i
 					var/failed = 0

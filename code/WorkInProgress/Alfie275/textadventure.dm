@@ -57,7 +57,7 @@
 
 /datum/textadv/proc/Do(var/msg as text)
 
-	//var/l = lentext(msg)
+	//var/l = length(msg)
 	//if(findtext(msg," ",l,l+1)==0)
 	//	msg+=" "
 	var/list/tokens = list()

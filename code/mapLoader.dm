@@ -19,14 +19,14 @@ var/QML_space_overwrite = 0
 		return text2num(dat)
 
 	else if(cmptext(copytext(dat,1,2),"\"") || cmptext(copytext(dat,1,2),"\'"))
-		return copytext(dat, 2, lentext(dat))
+		return copytext(dat, 2, length(dat))
 
 	else if(cmptext(copytext(dat,1,2),"/"))
 		return text2path(dat)
 
 	else if(findtext(dat,"("))
 		var/func=copytext(dat, 1, findtext(dat, "("))
-		var/params=copytext(dat, findtext(dat, "(")+1, lentext(dat))
+		var/params=copytext(dat, findtext(dat, "(")+1, length(dat))
 		var/list/l=QML_splitObjects(params)
 		var/list/l2 = list()
 		for(var/a in l)
@@ -83,7 +83,7 @@ var/QML_space_overwrite = 0
 			var/obj = new type(loc)
 
 			if(isobj(obj))
-				QML_applySettings(obj, copytext(dat,findtext(dat,"{")+1, lentext(dat)))
+				QML_applySettings(obj, copytext(dat,findtext(dat,"{")+1, length(dat)))
 
 	else
 		var/type = text2path(dat)
@@ -107,7 +107,7 @@ var/QML_space_overwrite = 0
 	var/c=text2ascii(end)
 	var/e=text2ascii("\\")
 
-	for(i=0, i<lentext(dat), i++)
+	for(i=0, i<length(dat), i++)
 		char = text2ascii(dat,i+1)
 		if(quote)
 			if(char==e)
@@ -145,7 +145,7 @@ var/QML_space_overwrite = 0
 
 /proc/QML_makeObjects(var/turf/loc, var/dat)
 	if(text2ascii(dat,1)==text2ascii("("))
-		var/list/l=QML_splitObjects(copytext(dat,2,lentext(dat)))
+		var/list/l=QML_splitObjects(copytext(dat,2,length(dat)))
 
 		if(l)
 			var/i
@@ -164,7 +164,7 @@ var/QML_space_overwrite = 0
 	var/str
 
 	str = findtext(mapText,"\n")
-	while(str>=0 && lentext(mapText)>1)
+	while(str>=0 && length(mapText)>1)
 		map += copytext(mapText,1,str)
 		mapText = copytext(mapText,str+1,0)
 		str = findtext(mapText,"\n")
@@ -178,15 +178,15 @@ var/QML_space_overwrite = 0
 	var/list/collect
 
 	for(var/s in map)
-		if(lentext(s) == 0)
+		if(length(s) == 0)
 			stage=1
 
 		else if(stage == 0)
 			var/id = copytext(s, 2, 0)
 
 			id = copytext(id, 1, findtext(id, "\""))
-			if(lentext(id)>size)
-				size=lentext(id)
+			if(length(id)>size)
+				size=length(id)
 			types[id] = copytext(s, findtext(s,"=")+2)
 
 		else if(stage == 1)
@@ -208,7 +208,7 @@ var/QML_space_overwrite = 0
 					s=collect[collect.len-j]
 					var x = 0
 					var i = 0
-					var/len = lentext(s)
+					var/len = length(s)
 
 					for(i=1, i<=len, i+=size)
 						var/id = copytext(s,i,i+size)

@@ -205,7 +205,7 @@
 			for(var/mob/living/carbon/human/H in traitor_suspects)
 				intercepttext += H.name
 				intercepttext += ", "
-			intercepttext = copytext(intercepttext,0,lentext(intercepttext-1)) // remove the last two characters which are ", "
+			intercepttext = copytext(intercepttext,0,length(intercepttext-1)) // remove the last two characters which are ", "
 			for (var/obj/machinery/computer/communications/comm in world)
 				if (!(comm.stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
 					var/obj/item/weapon/paper/intercept = new /obj/item/weapon/paper( comm.loc )

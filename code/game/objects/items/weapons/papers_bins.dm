@@ -81,11 +81,11 @@ CLIPBOARDS
 			if ((!in_range(src, usr) && src.loc != user && !( istype(src.loc, /obj/item/weapon/clipboard) ) && src.loc.loc != user && user.equipped() != P))
 				return
 
-			if(lentext(t) >= MAX_PAPER_MESSAGE_LEN)
+			if(length(t) >= MAX_PAPER_MESSAGE_LEN)
 				var/cont = input(user, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 				if(cont == "no")
 					break
-		while(lentext(t) > MAX_PAPER_MESSAGE_LEN)
+		while(length(t) > MAX_PAPER_MESSAGE_LEN)
 
 
 		//t = copytext(sanitize(t),1,MAX_PAPER_MESSAGE_LEN)

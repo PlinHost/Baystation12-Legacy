@@ -38,7 +38,7 @@ AI MODULES
 		usr << "The upload computer is broken!"
 		return
 	if(istype(src,/obj/item/weapon/aiModule/freeform))
-		if(lentext(src:newFreeFormLaw) > 1000) //probably still too high but need discuss how long is reasonable
+		if(length(src:newFreeFormLaw) > 1000) //probably still too high but need discuss how long is reasonable
 			usr << "\red BUFFER OVERFLOW"
 			return
 	var/found=0
@@ -202,7 +202,7 @@ AI MODULES
 /obj/item/weapon/aiModule/freeform/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
 	var/law = "[newFreeFormLaw]"
-	if(lentext(law) > 2000)
+	if(length(law) > 2000)
 		sender << "BUFFER OVERFLOW"
 		return
 	target << law

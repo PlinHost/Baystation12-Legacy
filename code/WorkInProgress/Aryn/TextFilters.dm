@@ -1,8 +1,8 @@
 proc/Intoxicated(phrase)
 	phrase = html_decode(phrase)
 	var
-		leng=lentext(phrase)
-		counter=lentext(phrase)
+		leng=length(phrase)
+		counter=length(phrase)
 		newphrase="";newletter=""
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
